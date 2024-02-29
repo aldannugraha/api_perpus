@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->integer('tahun_terbit')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('kategori_id')->references('id')->on('kategori');
+            $table->foreign('kategori_id')->references('id')->on('kategoris');
         });
     }
 
