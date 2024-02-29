@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class kategori extends Model
 {
-    protected $table = "kategori";
+    protected $table = "kategoris";
 
     // public $timestamps = false;
     protected $fillable = [
