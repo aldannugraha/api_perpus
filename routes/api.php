@@ -27,4 +27,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::put('buku/{id}',[booksController::class, 'update']);
 // Route::delete('buku/{id}',[booksController::class, 'destroy']);
 Route::apiResource('buku', booksController::class);
-Route::apiResource('user', usersController::class);
+Route::apiResource('login', usersController::class);
