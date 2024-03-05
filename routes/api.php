@@ -15,19 +15,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-
-// // Route::get('buku',[booksController::class, 'index']);
-// // Route::get('buku/{id}',[booksController::class, 'show']);
-// // Route::post('buku',[booksController::class, 'store']);
-// // Route::put('buku/{id}',[booksController::class, 'update']);
-// // Route::delete('buku/{id}',[booksController::class, 'destroy']);
+// Route::get('buku',[booksController::class, 'index']);
+// Route::get('buku/{id}',[booksController::class, 'show']);
+// Route::post('buku',[booksController::class, 'store']);
+// Route::put('buku/{id}',[booksController::class, 'update']);
+// Route::delete('buku/{id}',[booksController::class, 'destroy']);
 // Route::apiResource('/buku', booksController::class);
 // Route::post('/login',[usersController::class, 'login']);
 // Route::post('/register',[usersController::class, 'store']);
 // Route::get('/login/show',[usersController::class, 'index']);
-// // Route::apiResource('login', usersController::class);
+// Route::apiResource('login', usersController::class);
