@@ -14,12 +14,12 @@ class usersController extends Controller
      */
     public function index()
     {
-        // $data = users::orderBy('id')->get();
-        // return response()->json([
-        //     'status'=>true,
-        //     'message'=>'Data ditemukan',
-        //     'data'=>$data
-        // ],200);
+        $data = users::orderBy('id')->get();
+        return response()->json([
+            'status'=>true,
+            'message'=>'Data ditemukan',
+            'data'=>$data
+        ],200);
     }
 
     /**
