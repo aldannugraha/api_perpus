@@ -62,27 +62,45 @@ class usersController extends Controller
     }
     public function login()
     {
-        try {
-            $username = $this->postField('username');
-            $password = $this->postField('password');
+        $credentials = $request->only('username', 'password');
 
-            $user = Users::with([])
-                ->where('username', '=', $username)
-                ->where('role', '=', 'PEMINJAM')
-                ->first();
-            if (!$user) {
-                return $this->jsonNotFoundResponse('user not found');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::users();
+
+            if ($user->role == 'PEMINJAM') {
+                return response()->json([
+                    'message' => 'Login Success',
+                    'user' => $user
+                ], 200);
+            } else {
+                Auth::logout();
+                return response()->json(['message' => 'Unauthorized'], 401);
             }
-
-            $isPasswordValid = Hash::check($password, $user->password);
-            if (!$isPasswordValid) {
-                return $this->jsonUnauthorizedResponse('password did not match');
-            }
-
-            return $this->jsonSuccessResponse('Login Success',$user);
-        }catch (\Throwable $e) {
-            return $this->jsonErrorResponse('internal server error '.$e->getMessage());
+        } else {
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
+        
+        // try {
+        //     $username = $this->postField('username');
+        //     $password = $this->postField('password');
+
+        //     $user = Users::with([])
+        //         ->where('username', '=', $username)
+        //         ->where('role', '=', 'PEMINJAM')
+        //         ->first();
+        //     if (!$user) {
+        //         return $this->jsonNotFoundResponse('user not found');
+        //     }
+
+        //     $isPasswordValid = Hash::check($password, $user->password);
+        //     if (!$isPasswordValid) {
+        //         return $this->jsonUnauthorizedResponse('password did not match');
+        //     }
+
+        //     return $this->jsonSuccessResponse('Login Success',$user);
+        // }catch (\Throwable $e) {
+        //     return $this->jsonErrorResponse('internal server error '.$e->getMessage());
+        // }
     }
     public function loginPetugas()
     {
