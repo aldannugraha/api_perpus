@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\api\usersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+$router->group(['prefix' => 'api/v1'], function () use ($router) {
+
+    //public routing
+    $router->group(['prefix' => 'user'], function () use ($router) {
+        $router->post('/login', 'usersController@login');
+        $router->post('/register', 'usersController@store');
+        $router->get('/', 'usersController@index');
+    });
+
