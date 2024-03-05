@@ -29,4 +29,4 @@ Route::apiResource('/buku', booksController::class);
 Route::post('/login',[usersController::class, 'login']);
 Route::post('/register',[usersController::class, 'store']);
 Route::get('/login/show',[usersController::class, 'index']);
-Route::apiResource('login', usersController::class);
+// Route::apiResource('login', usersController::class);
