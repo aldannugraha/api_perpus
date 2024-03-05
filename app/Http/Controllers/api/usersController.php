@@ -14,12 +14,12 @@ class usersController extends Controller
      */
     public function index()
     {
-        $data = users::orderBy('id')->get();
-        return response()->json([
-            'status'=>true,
-            'message'=>'Data ditemukan',
-            'data'=>$data
-        ],200);
+        // $data = users::orderBy('id')->get();
+        // return response()->json([
+        //     'status'=>true,
+        //     'message'=>'Data ditemukan',
+        //     'data'=>$data
+        // ],200);
     }
 
     /**
@@ -59,30 +59,6 @@ class usersController extends Controller
             'status'=>true,
             'message'=>'Sukses memasukan data',
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
     public function login()
     {
@@ -132,4 +108,29 @@ class usersController extends Controller
             return $this->jsonErrorResponse('internal server error '.$e->getMessage());
         }
     }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+    
 }
