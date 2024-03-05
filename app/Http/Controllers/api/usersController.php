@@ -60,7 +60,7 @@ class usersController extends Controller
             'message'=>'Sukses memasukan data',
         ]);
     }
-    public function login()
+    public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
 
