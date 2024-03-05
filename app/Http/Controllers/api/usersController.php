@@ -27,21 +27,38 @@ class usersController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $body = $this->parseRequestBody();
-            $data = [
-                'nama' => $body['nama'],
-                'username' => $body['username'],
-                'telp' => $body['telp'],
-                'alamat' => $body['alamat'],
-                'role' => 'PEMINJAM',
-                'password' => Hash::make($body['password']),
-            ];
-            $occupant = Users::create($data);
-            return $this->jsonCreatedResponse('success', $occupant);
-        } catch (\Throwable $e) {
-            return $this->jsonErrorResponse('internal server error ' . $e->getMessage());
+         $datausers = new users;
+
+        $rules = [
+            'username' => 'required',
+            'nama' => 'required',
+            'password' => 'required',
+            'telp' => 'required',
+            'alamat' => 'required',
+
+        ];
+        $validator = Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return response()->json([
+                'status'=>true,
+            'message'=>'Gagal memasukan data',
+            'data'=>$validator->errors()
+            ]);
         }
+
+        
+        $datausers->nama = $request->nama;
+        $datausers->username = $request->username;
+        $datausers->telp = $request->telp;
+        $datausers->alamat = $request->alamat;
+        $datausers->password = $request->password;
+
+        $post =  $datausers->save();
+
+        return response()->json([
+            'status'=>true,
+            'message'=>'Sukses memasukan data',
+        ]);
     }
 
     /**
