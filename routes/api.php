@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::put('buku/{id}',[booksController::class, 'update']);
 // Route::delete('buku/{id}',[booksController::class, 'destroy']);
 Route::apiResource('buku', booksController::class);
-Route::get('login',[usersController::class, 'login']);
+Route::post('login',[usersController::class, 'login']);
 Route::post('login',[usersController::class, 'store']);
+Route::get('login/show',[usersController::class, 'index']);
 // Route::apiResource('login', usersController::class);
