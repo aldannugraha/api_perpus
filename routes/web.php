@@ -15,9 +15,8 @@ use App\Http\Controllers\api\usersController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+$router->get('/', function () use ($router) {
+    return $router->app->version();
 });
 
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
