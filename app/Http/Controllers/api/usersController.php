@@ -29,22 +29,22 @@ class usersController extends Controller
     {
          $datausers = new users;
 
-        $rules = [
-            'username' => 'required',
-            'nama' => 'required',
-            'password' => 'required',
-            'telp' => 'required',
-            'alamat' => 'required',
+        // $rules = [
+        //     'username' => 'required',
+        //     'nama' => 'required',
+        //     'password' => 'required',
+        //     'telp' => 'required',
+        //     'alamat' => 'required',
 
-        ];
-        $validator = Validator::make($request->all(),$rules);
-        if($validator->fails()){
-            return response()->json([
-                'status'=>true,
-            'message'=>'Gagal memasukan data',
-            'data'=>$validator->errors()
-            ]);
-        }
+        // ];
+        // $validator = Validator::make($request->all(),$rules);
+        // if($validator->fails()){
+        //     return response()->json([
+        //         'status'=>true,
+        //     'message'=>'Gagal memasukan data',
+        //     'data'=>$validator->errors()
+        //     ]);
+        // }
 
         
         $datausers->nama = $request->nama;
